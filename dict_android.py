@@ -21,7 +21,7 @@ class AddButton(Button):
     def __init__(self, Entry, **kwargs):
         super(AddButton, self).__init__(**kwargs)
         self.entry = Entry
-        self.text = "Make Flashcard"
+        self.text = "暗記カード作成"
 
 class SearchResult(BoxLayout):
     entry = DictProperty()
@@ -51,7 +51,7 @@ class SearchResult(BoxLayout):
             #print(self.on_press)
             jbox = BoxLayout(orientation = "vertical", size_hint_x = 2)
             ebox = BoxLayout(orientation = "vertical", size_hint_x = 2)  
-            button = Button(on_press = self.on_press, text = "Make Flashcard")  
+            button = Button(on_press = self.on_press, text = "暗記カード作成")  
            # print("cat")
 
             for eachForm in dict(self.entry)["japanese"]:
@@ -286,7 +286,7 @@ class SearchBoxPage(BoxLayout):
         self.searchbar = BoxLayout(orientation = "horizontal", size_hint_y = 0.5)
         self.searchBox = TextInput()
         self.resultsBox = ResultsView()
-        self.mySearchBtn = Button(text = "Search", on_press = partial(self.search), size_hint_x = 0.2, background_color = (1,0,1,1))
+        self.mySearchBtn = Button(text = "検索", on_press = partial(self.search), size_hint_x = 0.2, background_color = (1,0,1,1))
         self.searchbar.add_widget(self.searchBox)
         self.searchbar.add_widget(self.mySearchBtn)
        # self.mybox.add_widget(SearchResult(Word.request("cow").dict()["data"][0])) #test
