@@ -22,10 +22,10 @@ Builder.load_string("""
     BoxLayout:
         orientation: "vertical"
         Button:
-            text: 'Go to Dictionary'
+            text: '辞書'
             on_press: root.manager.current = 'search_page'
         Button:
-            text: 'Go to Flashcards'
+            text: '暗記カード'
             on_press: root.manager.current = 'learn_page'
 
 <SearchPage>:
@@ -36,10 +36,10 @@ Builder.load_string("""
     BoxLayout:
         orientation: "vertical"
         Button:
-            text: "Listening"
+            text: "聞き取り"
             on_press: root.manager.current = "listening_page"
         Button:
-            text: "Speaking"
+            text: "話し出す"
             on_press: root.manager.current = "speaking_page"
 
 <ListeningPage>

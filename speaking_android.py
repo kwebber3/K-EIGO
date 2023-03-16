@@ -31,31 +31,31 @@ class SpeakingBox(BoxLayout,):
         self.last_card = []
         self.orientation = "vertical"
         self.buttonBar = BoxLayout(orientation = "horizontal")
-        self.show_button = Button(text="Example", on_press=partial(self.ShowExample))
+        self.show_button = Button(text="例文", on_press=partial(self.ShowExample))
         self.buttonBar.add_widget(self.show_button)
 
-        self.answer_button = Button(text="Answer", on_press=partial(self.ShowAnswer))
+        self.answer_button = Button(text="回答", on_press=partial(self.ShowAnswer))
         self.buttonBar.add_widget(self.answer_button)
 
-        self.addButton = Button(text="Correct", on_press=partial(self.AddPoint))
+        self.addButton = Button(text="正しい", on_press=partial(self.AddPoint))
         self.buttonBar.add_widget(self.addButton)
 
-        self.subtractButton = Button(text="Wrong", on_press=partial(self.SubtractPoint))
+        self.subtractButton = Button(text="間違い", on_press=partial(self.SubtractPoint))
         self.buttonBar.add_widget(self.subtractButton)
 
         
         self.add_widget(self.buttonBar)
 
-        self.cardPrompt = Label()
+        self.cardPrompt = Label(font_name = "DroidSansJapanese")
         self.add_widget(self.cardPrompt)
-        self.example = Label()
+        self.example = Label(font_name = "DroidSansJapanese")
         self.example.bind(size=self.example.setter('text_size'))    
 
         self.add_widget(self.example)
-        self.answer = Label(font_name = "DroidSansJapanese")
+        self.answer = Label()
 
         self.add_widget(self.answer)
-        self.sentence_answer = Label(font_name = "DroidSansJapanese")
+        self.sentence_answer = Label()
         self.add_widget(self.sentence_answer)
         self.sentence_answer.bind(size=self.sentence_answer.setter('text_size'))    
 
@@ -81,23 +81,23 @@ class SpeakingBox(BoxLayout,):
         self.current_score, self.current_card, status, self.index = get_card_reverse(self.current_score,self.last_card,self.my_scored_cards, self.score_weights)
         
         if status == "GOOD":
-            English = self.current_card[ENG_INDEX]
+            English = self.current_card[JP_INDEX]
             self.cardPrompt.text = English
-            self.Japanese = re.sub("@","\n",self.current_card[JP_INDEX])
+            self.English = re.sub("@","\n",self.current_card[ENG_INDEX])
             self.English_Example = re.sub("@","\n",self.current_card[ENG_SENT_INDEX])
             self.Japanese_Sentence = re.sub("@","\n",self.current_card[JP_SENT_INDEX])
             self.Japanese_Sentence = re.sub("<[/]*b>","",self.Japanese_Sentence)
 
         elif status == "ERROR":
             self.cardPrompt.text = "PRACTICE LISTENING MORE"
-            self.Japanese = ""
+            self.English = ""
             self.English_Example = ""
             self.Japanese_Sentence = ""
             self.addButton.disabled = True
             self.subtractButton.disabled = True
         else:
             self.cardPrompt.text = "Unknown Status"
-            self.Japanese = ""
+            self.English = ""
             self.English_Example = ""
             self.Japanese_Sentence = ""
             self.addButton.disabled = True
@@ -110,11 +110,11 @@ class SpeakingBox(BoxLayout,):
         self.sentence_answer.text = ""
 
     def ShowExample(self, instance):
-        self.example.text = self.English_Example
+        self.example.text = self.Japanese_Sentence
 
     def ShowAnswer(self, instance):
-        self.answer.text = self.Japanese
-        self.sentence_answer.text = self.Japanese_Sentence
+        self.answer.text = self.English
+        self.sentence_answer.text = self.English_Example
 
     def AddPoint(self, instance):
        # print(self.current_score)
