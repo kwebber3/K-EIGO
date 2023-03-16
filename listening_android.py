@@ -41,23 +41,24 @@ class ListeningBox(BoxLayout,):
         self.orientation = "vertical"
         self.buttonBar = BoxLayout(orientation = "horizontal")
 
-        self.show_button = Button(text="読み", on_press=partial(self.ShowText))
+        self.show_button = Button(text="読み", on_press=partial(self.ShowText),font_name = "DroidSansJapanese")
         self.buttonBar.add_widget(self.show_button)
 
-        self.show_button = Button(text="例文", on_press=partial(self.ShowExample))
+        self.show_button = Button(text="例文", on_press=partial(self.ShowExample),font_name = "DroidSansJapanese")
         self.buttonBar.add_widget(self.show_button)
 
-        self.answer_button = Button(text="回答", on_press=partial(self.ShowAnswer))
+        self.answer_button = Button(text="回答", on_press=partial(self.ShowAnswer),font_name = "DroidSansJapanese")
         self.buttonBar.add_widget(self.answer_button)
 
-        self.addButton = Button(text="正しい", on_press=partial(self.AddPoint))
+        self.addButton = Button(text="正しい", on_press=partial(self.AddPoint),font_name = "DroidSansJapanese")
         self.buttonBar.add_widget(self.addButton)
 
-        self.subtractButton = Button(text="間違い", on_press=partial(self.SubtractPoint))
+        self.subtractButton = Button(text="間違い", on_press=partial(self.SubtractPoint),font_name = "DroidSansJapanese")
         self.buttonBar.add_widget(self.subtractButton)
         self.add_widget(self.buttonBar)
+
         
-        self.speakButton = Button(text = "聞く", on_press = partial(self.PlayWord))
+        self.speakButton = Button(text = "聞く", on_press = partial(self.PlayWord),font_name = "DroidSansJapanese")
         self.add_widget(self.speakButton)
         self.cardPrompt = Label()
         self.add_widget(self.cardPrompt)
@@ -69,8 +70,9 @@ class ListeningBox(BoxLayout,):
         self.sentence_answer = Label(font_name = "DroidSansJapanese")
         self.add_widget(self.sentence_answer)
         self.sentence_answer.bind(size=self.sentence_answer.setter('text_size'))    
+        self.endButton = Button(text = "保存してアプリを出る", on_press = self.save_func, font_name = "DroidSansJapanese")
+        self.add_widget(self.endButton)
 
-        
         self.system = os.name
 
         self.GetCard()
@@ -80,6 +82,12 @@ class ListeningBox(BoxLayout,):
         Window.bind(on_request_close=self.end_func)
 
     def end_func(self, *args):
+        self.SaveResults()
+        #print("cow died")
+        Window.close()
+        return True
+    
+    def save_func(self, instance):
         self.SaveResults()
         #print("cow died")
         Window.close()
