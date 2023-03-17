@@ -1,4 +1,5 @@
 from kivy.app import App
+from kivy.base import EventLoop
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.boxlayout import BoxLayout
@@ -86,13 +87,22 @@ class TestApp(App):
 
     def build(self):
         # Create the screen manager
-        sm = ScreenManager()
-        sm.add_widget(MenuScreen(name='menu'))
-        sm.add_widget(SearchPage(name='search_page'))        
-        sm.add_widget(LearningMainPage(name='learn_page'))
-        sm.add_widget(ListeningPage(name='listening_page'))
-        sm.add_widget(SpeakingPage(name='speaking_page'))
-        return sm
+        self.sm = ScreenManager()
+        self.sm.add_widget(MenuScreen(name='menu'))
+        self.sm.add_widget(SearchPage(name='search_page'))        
+        self.sm.add_widget(LearningMainPage(name='learn_page'))
+        self.sm.add_widget(ListeningPage(name='listening_page'))
+        self.sm.add_widget(SpeakingPage(name='speaking_page'))
+        return self.sm
+    
+    def on_start(self):
+        EventLoop.window.bind(on_keyboard=self.hook_keyboard)
+
+    def hook_keyboard(self, window, key, *largs):
+        if key in [27,1001]:
+            self.sm.current = "menu"
+            return True
+
 
 if __name__ == '__main__':
     TestApp().run()
