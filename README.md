@@ -1,7 +1,8 @@
-Hi
+Python I use: https://play.google.com/store/apps/details?id=ru.iiec.pydroid3. 
+
 Discord https://discord.gg/FWKJDfsd
 
-Packages: 
+#Packages: (pip install ...) replace... with package name
 
 kivy 
 
@@ -17,4 +18,13 @@ pydub
 
 requests  
 
+#Use 
 
+
+run main_android.py  
+
+
+add cards in dictionary 
+
+
+practice cards and SAVE and Exit
