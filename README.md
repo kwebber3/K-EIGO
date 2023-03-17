@@ -13,4 +13,8 @@ gtts
 
 jisho_api 
 
+pydub  
+
+requests  
+
 
