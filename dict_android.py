@@ -195,7 +195,8 @@ class SearchBoxPage(BoxLayout):
             
             for eachReading in self.hiragana:
                 self.rows.append([None,eachReading, self.english[j],"@","@",1,1])
-                j = j + 1
+                if j<len(self.english)-1:
+                    j = j + 1
 
             print(self.rows)
             for eachRow in self.rows:
@@ -255,7 +256,8 @@ class SearchBoxPage(BoxLayout):
             
             for eachKanji in self.japanese:
                 self.rows.append([None,eachKanji, self.english[j],"@","@","@",1,self.reading[j],1])
-                j = j + 1
+                if j<len(self.english)-1:
+                    j = j + 1
 
             print(self.rows)
             for eachRow in self.rows:
