@@ -2,7 +2,7 @@ Python I use: https://play.google.com/store/apps/details?id=ru.iiec.pydroid3.
 
 Discord https://discord.gg/FWKJDfsd
 
-#Packages: (pip install ...) replace... with package name
+# Packages: (pip install ...) replace... with package name
 
 kivy 
 
@@ -18,7 +18,7 @@ pydub
 
 requests  
 
-#Use 
+# Use 
 
 
 run main_android.py  
