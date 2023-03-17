@@ -24,9 +24,13 @@ Builder.load_string("""
         Button:
             text: '辞書'
             on_press: root.manager.current = 'search_page'
+            font_name: "DroidSansJapanese"
+
         Button:
             text: '暗記カード'
             on_press: root.manager.current = 'learn_page'
+            font_name: "DroidSansJapanese"
+
 
 <SearchPage>:
     name: "search_page"
@@ -37,10 +41,12 @@ Builder.load_string("""
         orientation: "vertical"
         Button:
             text: "聞き取り"
-            on_press: root.manager.current = "listening_page"
+            on_press: root.manager.current = "listening_page"            
+            font_name: "DroidSansJapanese"
         Button:
             text: "話し出す"
             on_press: root.manager.current = "speaking_page"
+            font_name: "DroidSansJapanese"
 
 <ListeningPage>
     name: "listening_page"
