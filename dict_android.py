@@ -236,7 +236,7 @@ class SearchBoxPage(BoxLayout):
                 if self.japanese == None:
                     pass
                 else:
-                    jindex = self.japanese.index(eachForm)
+                    jindex = self.japanese.index(eachForm["word"])
 
                     self.reading[jindex] = "@".join([self.reading[jindex],eachForm["reading"]])
                     
