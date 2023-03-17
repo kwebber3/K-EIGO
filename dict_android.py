@@ -173,7 +173,7 @@ class SearchBoxPage(BoxLayout):
                         print("ERROR: Less definitons than entries")
                 i = i + 1
             else: 
-                jindex = self.japanese.index(eachForm)
+                jindex = self.hiragana.index(eachForm["reading"])
                 # print(self.japanese)
                 #print(self.reading)
                 if eachForm["reading"] == None:
