@@ -286,7 +286,7 @@ class SearchBoxPage(BoxLayout):
         self.name = "search_page"
         self.orientation = "vertical"
         self.searchbar = BoxLayout(orientation = "horizontal", size_hint_y = 0.5)
-        self.searchBox = TextInput()
+        self.searchBox = TextInput(font_name = "TakaoMincho")
         self.resultsBox = ResultsView()
         self.mySearchBtn = Button(text = "検索", on_press = partial(self.search), size_hint_x = 0.2, background_color = (1,0,1,1),font_name = "DroidSansJapanese")
         self.searchbar.add_widget(self.searchBox)
