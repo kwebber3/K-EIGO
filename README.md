@@ -1,8 +1,10 @@
 Hi
 Discord https://discord.gg/FWKJDfsd
 
-Packages
-Kivy
-Pandas
-Dplyer (notice e)
-Gtts
+Packages: 
+kivy 
+pandas 
+plyer (notice e) 
+gtts 
+
+jisho-dict-api
