@@ -69,25 +69,28 @@ class SpeakingBox(BoxLayout,):
         Window.bind(on_request_close=self.end_func)
 
     def end_func(self, *args):
-        self.SaveResults()
+        if not self.saved:
+            self.SaveResults()
         #print("cow died")
         Window.close()
         return True
     
     def save_func(self, instance):
-        self.SaveResults()
+        if not self.saved:
+            self.SaveResults()  
         #print("cow died")
         Window.close()
         return True
-
+    
     def SaveResults(self):
         export_speakingLibrary_to_txt(self.my_scored_cards,DICTIONARY_NAME)
+        self.saved = True
 
     def GetCard(self):
         self.score_weights = update_weights(self.my_scored_cards, self.number_of_cards)
         self.current_score = random.choices(range(1,len(self.score_weights)+1),weights = self.score_weights)[0]
         self.current_score, self.current_card, status, self.index = get_card_reverse(self.current_score,self.last_card,self.my_scored_cards, self.score_weights)
-        
+        self.saved = False
         if status == "GOOD":
             English = self.current_card[JP_INDEX]
             self.cardPrompt.text = English
