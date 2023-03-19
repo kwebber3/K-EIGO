@@ -1,4 +1,3 @@
-from kivy.core.window import Window
 from kivy.uix.screenmanager import Screen
 from kivy.properties import DictProperty
 from kivy.properties import ObjectProperty
@@ -145,10 +144,6 @@ class ResultsView(RecycleView):
 class SearchBoxPage(BoxLayout):
     eachEntry = DictProperty()
     current = ObjectProperty()
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self._keyboard = Window.request_keyboard(self._keyboard_closed, self, "text")
 
     def makeFlashCard(self, entry, instance):
         
